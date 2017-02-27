@@ -72,9 +72,10 @@ namespace SimpleStudentManager.Controllers
 				var s = db.Students.Find(student.Id);
 				s.Name = student.Name;
 				s.PhotoUrl = student.PhotoUrl;
+				student = s;
 			}
 			await db.SaveChangesAsync();
-			return Ok();
+			return Ok(new { id = student.Id});
 		}
 
 		public IActionResult Error()

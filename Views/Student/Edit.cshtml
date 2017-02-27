@@ -29,7 +29,7 @@
 }
 		<li>
 			<div class="center" style="padding: 10px;">
-				<a asp-action="snapPhoto" asp-route-id="@Model.Id" class="btn-default btn-lg blue">
+				<a onclick="snapPhoto()" class="btn-default btn-lg blue">
 					<span class="glyphicon glyphicon-user center"></span>
 					<span>New Profile Photo</span>
 				</a>
@@ -110,6 +110,22 @@
 						location.href = '/' : location.href = '/student/list';
 				});
 
+		}
+
+		function snapPhoto() {
+			var name = $('#Name').val();
+			if (!name)
+				name = "";
+
+			$.post('@Url.Action("Save")',
+				{
+					Id: $('#Id').val(),
+					Name: name,
+					PhotoUrl: $('#Photo').attr('src')
+				})
+				.done((result) => {
+					location.href = '/student/SnapPhoto/' + result.id;
+				});
 		}
 	</script>
 }
