@@ -35,7 +35,18 @@ namespace SimpleStudentManager.Controllers
 		public IActionResult Info(int id)
 		{
 			var student = db.Students.Find(id);
-			return View(student);
+
+			var model = new InfoViewModel();
+			model.Id = student.Id;
+			model.PhotoUrl = student.PhotoUrl;
+
+			var sa = student.Name.Trim().Split(' ');
+			if (sa.Length > 0)
+				model.FirstName = sa[0];
+			if (sa.Length > 1)
+				model.LastName = String.Join(" ", sa, 1, sa.Length-1);
+
+			return View(model);
 		}
 
 		public IActionResult Add()

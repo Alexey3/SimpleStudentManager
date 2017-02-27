@@ -1,4 +1,4 @@
-﻿@model Student
+﻿@model InfoViewModel
 @{
 	ViewData["Title"] = "Student Info";
 }
@@ -15,7 +15,8 @@
 			<div class="photoContainer">
 				<img class="photo" src="@Model.PhotoUrl" />
 			</div>
-			<div class="center">@Model.Name</div>
+			<div class="center">@Model.FirstName</div>
+			<div class="center">@Model.LastName</div>
 		</li>
 	</ul>
 </div>
