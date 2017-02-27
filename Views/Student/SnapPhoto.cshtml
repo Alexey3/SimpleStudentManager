@@ -1,0 +1,20 @@
+﻿<div class="snapApp">
+	<a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
+	<video id="camera-stream"></video>
+	<img id="snap">
+	<p id="error-message"></p>
+	<span class="controls center">
+		<a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
+	</span>
+	<!-- Hidden canvas element. Used for taking snapshot of video. -->
+	<canvas></canvas>
+</div>
+
+@section Header {
+	<link rel="stylesheet" href="~/css/snap-app.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+}
+@section Scripts {
+	<script>StudentId = @ViewData["StudentId"];</script>
+	<script src="~/js/snap_photo_script.js"></script>
+}

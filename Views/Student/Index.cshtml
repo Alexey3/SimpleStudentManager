@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Student App";
+}
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<span class="title">@ViewData["Title"]</span>
+</nav>
+
+<div class="container body-content">
+	<ul class="blue">
+		<li>
+			<a asp-action="list">
+				<span class="glyphicon glyphicon-th-list"></span>
+				<span>View Student List</span>
+			</a>
+		</li>
+		<li>
+			<a asp-action="add">
+				<span class="glyphicon glyphicon-plus"></span>
+				<span>Add Students</span>
+			</a>
+		</li>
+	</ul>
+</div>

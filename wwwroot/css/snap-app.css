@@ -1,0 +1,155 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+.snapApp {
+	width: 100%;
+	max-width: 400px;
+	position: relative;
+	margin: auto;
+}
+
+	.snapApp #start-camera {
+		display: none;
+		border-radius: 3px;
+		max-width: 400px;
+		color: #fff;
+		background-color: #448AFF;
+		text-decoration: none;
+		padding: 15px;
+		opacity: 0.8;
+		margin: 50px auto;
+		text-align: center;
+	}
+
+	.snapApp video#camera-stream {
+		display: none;
+		width: 100%;
+	}
+
+	.snapApp img#snap {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 10;
+		display: none;
+	}
+
+	.snapApp #error-message {
+		width: 100%;
+		background-color: #ccc;
+		color: #9b9b9b;
+		font-size: 28px;
+		padding: 200px 100px;
+		text-align: center;
+		display: none;
+	}
+
+	.snapApp .controls {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 20;
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		padding: 30px;
+		display: none;
+	}
+
+		.snapApp .controls a {
+			border-radius: 50%;
+			color: #fff;
+			background-color: #111;
+			text-decoration: none;
+			padding: 15px;
+			line-height: 0;
+			opacity: 0.7;
+			outline: none;
+			-webkit-tap-highlight-color: transparent;
+		}
+
+			.snapApp .controls a:hover {
+				opacity: 1;
+			}
+
+			.snapApp .controls a.disabled {
+				background-color: #555;
+				opacity: 0.5;
+				cursor: default;
+				pointer-events: none;
+			}
+
+				.snapApp .controls a.disabled:hover {
+					opacity: 0.5;
+				}
+
+			.snapApp .controls a i {
+				font-size: 18px;
+			}
+
+		.snapApp .controls #take-photo {
+			margin: auto;
+			margin-top: 80%;
+		}
+
+			.snapApp .controls #take-photo i {
+				font-size: 32px;
+			}
+
+	.snapApp canvas {
+		display: none;
+	}
+
+
+
+	.snapApp video#camera-stream.visible,
+	.snapApp img#snap.visible,
+	.snapApp #error-message.visible {
+		display: block;
+	}
+
+	.snapApp .controls.visible {
+		display: flex;
+	}
+
+
+
+@media(max-width: 1000px) {
+	.container {
+		margin: 40px;
+	}
+
+	.snapApp #start-camera.visible {
+		display: block;
+	}
+
+	.snapApp .controls a i {
+		font-size: 16px;
+	}
+
+	.snapApp .controls #take-photo i {
+		font-size: 24px;
+	}
+}
+
+
+@media(max-width: 600px) {
+	.container {
+		margin: 10px;
+	}
+
+	.snapApp #error-message {
+		padding: 80px 50px;
+		font-size: 18px;
+	}
+
+	.snapApp .controls a i {
+		font-size: 12px;
+	}
+
+	.snapApp .controls #take-photo i {
+		font-size: 18px;
+	}
+}

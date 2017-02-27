@@ -1,0 +1,23 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<a asp-action="index" class="btn-primary btn-lg navbar-btn left">Menu</a>
+	<span class="title">@ViewData["Title"]</span>
+</nav>
+
+<div class="container body-content">
+	<ul>
+		@foreach (var student in Model)
+		{
+			<li>
+				<a asp-action="info" asp-route-id="@student.Id">
+					<span>@student.Name</span>
+					<span class="glyphicon glyphicon-chevron-right right"></span>
+				</a>
+			</li>
+		}
+	</ul>
+</div>

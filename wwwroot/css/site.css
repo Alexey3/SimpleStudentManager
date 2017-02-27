@@ -1,0 +1,75 @@
+﻿body {
+	padding-top: 5px;
+	min-width: 400px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+	padding-top: 60px;
+}
+
+.navbar {
+	padding: 0 10px;
+	text-align: center;
+	text-wrap:none;
+	min-width: 400px;
+}
+
+
+.blue {
+	color: dodgerblue;
+}
+
+.title {
+	font-size: x-large;
+	text-align: center;
+	font-weight: bold;
+	display: inline-block;
+	margin: 0;
+	margin-top: 10px;
+}
+
+ul{
+	padding: 0;
+}
+
+li {
+	font-size: x-large;
+	list-style-type: none;
+	min-width: 300px;	
+	border: 1px solid lightgrey;
+	padding: 20px;
+}
+
+a:hover, a:visited, a:link, a:active {
+	text-decoration: none;
+}
+
+.left{
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.center {
+	text-align: center;
+}
+
+.photoContainer {
+	width: 151px;
+	height: 151px;
+	border-radius: 50%;
+	border: 1px solid grey;
+	padding: 5px;
+	margin: 20px auto;
+}
+
+.photo {
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+}
+

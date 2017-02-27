@@ -1,0 +1,21 @@
+﻿@model Student
+@{
+	ViewData["Title"] = "Student Info";
+}
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<a asp-action="list" class="btn-primary btn-lg navbar-btn left">Back</a>
+	<span class="title">@ViewData["Title"]</span>
+	<a asp-action="edit" asp-route-id="@Model.Id" class="btn-primary btn-lg navbar-btn  right">Edit</a>
+</nav>
+
+<div class="container body-content">
+	<ul class="blue">
+		<li>
+			<div class="photoContainer">
+				<img class="photo" src="@Model.PhotoUrl" />
+			</div>
+			<div class="center">@Model.Name</div>
+		</li>
+	</ul>
+</div>

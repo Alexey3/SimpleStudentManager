@@ -1,0 +1,115 @@
+﻿@model Student
+@{
+	@if (Model.Id == 0)
+	{
+		ViewData["Title"] = "Add Student";
+	}
+	else
+	{
+		ViewData["Title"] = "Edit Student";
+	}
+}
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<a asp-action="index" class="btn-primary btn-lg navbar-btn left">Cancel</a>
+	<span class="title">@ViewData["Title"]</span>
+	<a class="btn-primary btn-lg navbar-btn right" onclick="saveButtonClick()" href="#">Save</a>
+</nav>
+
+<div class="container body-content">
+	<ul class="blue">
+@if (Model.Id == 0)
+{
+		<li>
+			<a onclick="getRandomStudent()" href="#" class="btn-default btn-lg blue">
+				<span class="glyphicon glyphicon-plus"></span>
+				<span>Get Random Student</span>
+			</a>
+		</li>
+}
+		<li>
+			<div class="center" style="padding: 10px;">
+				<a asp-action="snapPhoto" asp-route-id="@Model.Id" class="btn-default btn-lg blue">
+					<span class="glyphicon glyphicon-user center"></span>
+					<span>New Profile Photo</span>
+				</a>
+			</div>
+			<div class="photoContainer">
+				<img id="Photo" class="photo" src="@Model.PhotoUrl"/>
+			</div>
+			<div class="input-group input-group-lg">
+				<span class="input-group-addon" id="sizing-addon1">Name</span>
+				<input type="text" asp-for="Name" class="form-control" placeholder="Enter first and last name" aria-describedby="sizing-addon1">
+			</div>
+		</li>
+	</ul>
+@if (Model.Id != 0)
+{
+	<button type="button" class="btn btn-lg btn-danger" data-toggle="modal" 
+			data-target="#confirm-delete"
+			>Delete</button>
+	
+	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					Delete Student
+				</div>
+				<div class="modal-body">
+					Are you sure you want to delete this student?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-danger btn-ok"
+					   asp-action="delete" asp-route-id="@Model.Id">Delete</a>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+	<p id="errorMessage" class="alert alert-danger" hidden></p>
+</div>
+<input type="hidden" asp-for="Id" />
+
+@section Scripts {
+	<script>
+		function getRandomStudent() {
+			var name, photoUrl;
+			$.ajax({
+				url: 'https://randomuser.me/api/',
+				dataType: 'json',
+				success: function (data) {
+					name = data.results[0].name.first + ' ' + data.results[0].name.last;
+					photoUrl = data.results[0].picture.large;
+
+					$('#Name').val(name);
+					$('#Photo').attr('src', photoUrl);
+				}
+			});
+
+
+		}
+
+		function saveButtonClick() {
+			var name = $('#Name').val();
+			if (!name) {
+				$('#errorMessage').show();
+				$('#errorMessage').text("Please enter student's name");
+				return;
+			}
+
+			$.post('@Url.Action("Save")',
+				{
+					Id: $('#Id').val(),
+					Name: name,
+					PhotoUrl: $('#Photo').attr('src')
+				})
+				.done(() => {
+					$('#Id').val() === '0' ?
+						location.href = '/' : location.href = '/student/list';
+				});
+
+		}
+	</script>
+}
